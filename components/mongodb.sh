@@ -39,9 +39,11 @@ echo -n "Downloading the $COMPONENT Schema :"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
 stat $?
 
-echo -n "Injecting the $COMPONENT Schema : "
+echo -n "Extracting the $COMPONENT Schema : 
 cd /tmp
 unzip $COMPONENT.zip &>> $LOG_FILE
+
+echo -n "Injecting/Loading the $COMPONENT Schema : "
 cd $COMPONENT-main
 mongo < catalogue.js &>> $LOG_FILE
 mongo < users.js  &>> $LOG_FILE
