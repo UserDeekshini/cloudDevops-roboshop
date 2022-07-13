@@ -45,6 +45,5 @@ unzip $COMPONENT.zip &>> $LOG_FILE
 
 echo -n "Injecting/Loading the $COMPONENT Schema : "
 cd $COMPONENT-main
-mongo < catalogue.js &>> $LOG_FILE
-mongo < users.js  &>> $LOG_FILE
+mongo < catalogue.js &>> &&  mongo < users.js $LOG_FILE
 stat $?
