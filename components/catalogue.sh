@@ -9,7 +9,7 @@ NODE_SOURCE="https://rpm.nodesource.com/setup_lts.x"
 source components/common.sh
 
 echo -n "Installing nodeJS"
-curl -sL $NODE_SOURCE | bash
+curl -sL $NODE_SOURCE | bash &>>$LOG_FILE
 yum install nodejs -y  &>>$LOG_FILE
 stat $?
 
