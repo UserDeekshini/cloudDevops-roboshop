@@ -1,5 +1,3 @@
-#!/bin/bash
-
 frontend:
 	sh components/frontend.sh
 
@@ -14,7 +12,7 @@ mongodb:
 
 redis:
 	sh components/redis.sh
-	
+
 user:
 	sh components/user.sh
 
