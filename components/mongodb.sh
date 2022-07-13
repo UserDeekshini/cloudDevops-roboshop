@@ -30,6 +30,7 @@ stat $?
 echo -n "Restarting  the $COMPONENT : "
 systemctl restart mongod
 systemctl status mongod  &>> $LOG_FILE
+stat $?
 
 echo -n "Downloading the $COMPONENT Schema :"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
@@ -42,6 +43,6 @@ stat $?
 
 echo -n "Injecting/Loading the $COMPONENT Schema : "
 cd $COMPONENT-main
-mongo < catalogue.js &>> &&  mongo < users.js $LOG_FILE
+mongo < catalogue.js &>> &&  mongo < users.js  &>>$LOG_FILE
 stat $?
 echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
