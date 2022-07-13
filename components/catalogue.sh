@@ -44,10 +44,10 @@ mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.serv
 stat $?
 
 echo -n "Starting the $COMPONENT : "
-systemctl daemon-reload
-systemctl start $COMPONENT
-systemctl enable $COMPONENT
-systemctl status $COMPONENT -l
+systemctl daemon-reload &>>$LOG_FILE
+systemctl restart $COMPONENT &>>$LOG_FILE
+systemctl enable $COMPONENT &>>$LOG_FILE
+systemctl status $COMPONENT -l &>>$LOG_FILE
 
 #Now, you would still see **`CATEGORIES`** on the frontend page as empty. 
 #That’s because your `frontend` doesn't know who the `CATALOGUE` is when someone clicks the `CATEGORIES` option. So, we need to update the Nginx Reverse Proxy on the frontend. If not, you’d still see the frontend without categories.
