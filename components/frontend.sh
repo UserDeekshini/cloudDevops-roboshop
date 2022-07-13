@@ -3,16 +3,17 @@
 #The frontend is the service in RobotShop to serve the web content over Nginx.
 
 set -e
+COMPONENT=frontend
+LOGFILE="/tmp/$COMPONENT.log"
 source components/common.sh
 
-COMPONENT=frontend
+
 
 #user validation 
 USER_VALIDATION
 
 echo -n "Installing Nginx : "
-LOGFILE="/temp/$COMPONENT.log"
-yum install nginx -y >> $LOGFILE
+yum install nginx -y &>> $LOGFILE
 if [ $? -eq 0 ] ; then
     echo -e "\e[32m SUCCESS \e[0m"
 else
