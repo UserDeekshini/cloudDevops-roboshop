@@ -37,7 +37,7 @@ stat $?
 
 echo -n "Extracting the $COMPONENT Schema : 
 cd /tmp
-unzip $COMPONENT.zip &>> $LOG_FILE
+unzip -o $COMPONENT.zip &>> $LOG_FILE
 stat $?
 
 echo -n "Injecting/Loading the $COMPONENT Schema : "
