@@ -44,6 +44,7 @@ stat $?
 
 echo -n "Injecting/Loading the $COMPONENT Schema : "
 cd $COMPONENT-main
-mongo < catalogue.js &>> &&  mongo < users.js  &>>$LOG_FILE
+mongo < catalogue.js &>>$LOG_FILE
+mongo < users.js  &>>$LOG_FILE
 stat $?
 echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
