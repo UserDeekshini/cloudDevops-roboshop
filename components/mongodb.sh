@@ -47,4 +47,4 @@ cd $COMPONENT-main
 mongo < catalogue.js &>>$LOG_FILE
 mongo < users.js  &>>$LOG_FILE
 stat $?
-echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
+echo -e "\e[32m ------------$COMPONENT Configuration is completed-------  \e[0m"
