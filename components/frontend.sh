@@ -6,7 +6,7 @@ set -e
 
 #user validation 
 USER_ID=$(id -u)
-if[$USER_ID ne 0]; then
+if[$USER_ID -ne 0]; then
     echo "\e[32m User is not root!!! nginx installation is not possible \e[0m"
     exit 1
 fi
