@@ -37,7 +37,7 @@ echo -n "Downloading the $COMPONENT Schema : "
 curl -s -L -o /tmp/mongodb.zip $COMPONENT_REPO
 stat $?
 
-echo -n "Extracting the $COMPONENT Schema : 
+echo -n "Extracting the $COMPONENT Schema : "
 cd /tmp
 unzip -o $COMPONENT.zip &>> $LOG_FILE
 stat $?
