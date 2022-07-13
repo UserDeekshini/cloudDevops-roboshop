@@ -26,7 +26,7 @@ stat $?
 
 #Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
 echo -n "Starting  the MongoDB : "
-sed -e  's/127.0.0.1/0.0.0.0' /etc/mongod.conf
+sed -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf
 cat /etc/mongod.conf &>> $LOG_FILE
 stat $?
 
