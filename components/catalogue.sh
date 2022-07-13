@@ -38,7 +38,7 @@ npm install & >>$LOG_FILE
 stat $?
 
 echo -n "Updating SystemD file with correct IP addresses : "
-sed -i -e 's/MONGO_DNSNAME/catalogue.rhobode.iternal/' /home/roboshop/catalogue/systemd.service
+sed -i -e 's/MONGO_DNSNAME/172.31.11.146/' /home/roboshop/catalogue/systemd.service
 cat /home/roboshop/$COMPONENT/systemd.service &>>$LOG_FILE
 mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
