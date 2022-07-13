@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-COMPONENT=cart
+COMPONENT=mongodb
 LOG_FILE="/tmp/$COMPONENT.log"
 MONGODB_REPO_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
 
