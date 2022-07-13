@@ -8,19 +8,19 @@ MONGODB_REPO_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/
 #user validation 
 source components/common.sh
 
-echo -n "Downoading the MongoDB repos : "
+echo -n "Downoading the $COMPONENT repos : "
 curl -s -o /etc/yum.repos.d/mongodb.repo $MONGODB_REPO_URL 
 stat $?
 
-echo -n "Installing MongoDB repos : "
+echo -n "Installing $COMPONENT repos : "
 yum install -y mongodb-org &>> $LOG_FILE
 stat $?
 
-echo -n "Enabling  the MongoDB : "
+echo -n "Enabling  the $COMPONENT : "
 systemctl enable mongod &>> $LOG_FILE
 stat $?
 
-echo -n "Starting  the MongoDB : "
+echo -n "Starting  the $COMPONENT : "
 systemctl start mongod &>> $LOG_FILE
 stat $?
 
@@ -31,15 +31,15 @@ cat /etc/mongod.conf &>> $LOG_FILE
 stat $?
 
 
-echo -n "Restarting  the MongoDB : "
+echo -n "Restarting  the $COMPONENT : "
 systemctl restart mongod
 systemctl status mongod  &>> $LOG_FILE
 
-echo -n "Downloading the MongoDB Schema :"
+echo -n "Downloading the $COMPONENT Schema :"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
 stat $?
 
-echo -n "Injecting the Schema : "
+echo -n "Injecting the $COMPONENT Schema : "
 cd /tmp
 unzip $COMPONENT.zip &>> $LOG_FILE
 cd $COMPONENT-main
