@@ -4,6 +4,7 @@ set -e
 COMPONENT=mongodb
 LOG_FILE="/tmp/$COMPONENT.log"
 MONGODB_REPO_URL="https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo"
+COMPONENT_REPO="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 
 #user validation 
 source components/common.sh
@@ -32,8 +33,8 @@ systemctl restart mongod
 systemctl status mongod  &>> $LOG_FILE
 stat $?
 
-echo -n "Downloading the $COMPONENT Schema :"
-curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
+echo -n "Downloading the $COMPONENT Schema : "
+curl -s -L -o /tmp/mongodb.zip $COMPONENT_REPO
 stat $?
 
 echo -n "Extracting the $COMPONENT Schema : 
