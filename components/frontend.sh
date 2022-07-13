@@ -27,8 +27,11 @@ systemctl enable nginx  &>>$LOGFILE
 stat $?
 
 echo -n "Strating Nginx : "
-systemctl start nginx &>>  $LOGFILE
+systemctl restart nginx &>>  $LOGFILE
+systemctl status nginx &>>  $LOGFILE
 stat $?
+
+
 
 echo -n "Downloading $COMPONENT : "
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" 
