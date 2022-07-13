@@ -28,19 +28,19 @@ cd /home/roboshop && rm -rf $COMPONENT &>>$LOG_FILE
 stat $?
 
 echo -n "Extracting the $COMPONENT : "
-unzip -o /tmp/$COMPONENT.zip 
+unzip -o /tmp/$COMPONENT.zip &>>$LOG_FILE
 mv $COMPONENT-main $COMPONENT
 stat $?
 
-echo -n "Extracting the $COMPONENT"
+echo -n "Installing  the $COMPONENT"
 cd /home/roboshop/$COMPONENT 
 npm install & >>$LOG_FILE
 stat $?
 
 echo -n "Updating SystemD file with correct IP addresses : "
-sed -i -e 's/MONGO_DNSNAME/catalogue.rhobode.iternal' /home/roboshop/catalogue/systemd.service
-cat /home/roboshop/catalogue/systemd.service &>>$LOG_FILE
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+sed -i -e 's/MONGO_DNSNAME/catalogue.rhobode.iternal/' /home/roboshop/catalogue/systemd.service
+cat /home/roboshop/$COMPONENT/systemd.service &>>$LOG_FILE
+mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 
 echo -n "Starting the $COMPONENT : "
