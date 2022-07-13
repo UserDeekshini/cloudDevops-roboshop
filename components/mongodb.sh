@@ -20,10 +20,6 @@ echo -n "Enabling  the $COMPONENT : "
 systemctl enable mongod &>> $LOG_FILE
 stat $?
 
-echo -n "Starting  the $COMPONENT : "
-systemctl start mongod &>> $LOG_FILE
-stat $?
-
 #Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
 echo -n "Updating $COMPONENT Listening address : "
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
@@ -42,6 +38,7 @@ stat $?
 echo -n "Extracting the $COMPONENT Schema : 
 cd /tmp
 unzip $COMPONENT.zip &>> $LOG_FILE
+stat $?
 
 echo -n "Injecting/Loading the $COMPONENT Schema : "
 cd $COMPONENT-main
