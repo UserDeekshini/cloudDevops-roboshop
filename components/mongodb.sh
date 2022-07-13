@@ -25,7 +25,7 @@ systemctl start mongod &>> $LOG_FILE
 stat $?
 
 #Update Listen IP address from 127.0.0.1 to 0.0.0.0 in the config file, so that MongoDB can be accessed by other services.
-echo -n "Starting  the MongoDB : "
+echo -n "Updating $COMPONENT Listening address : "
 sed -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf
 cat /etc/mongod.conf &>> $LOG_FILE
 stat $?
