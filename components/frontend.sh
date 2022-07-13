@@ -6,11 +6,12 @@ set -e
 source components/common.sh
 
 COMPONENT=frontend
-LOGFILE="/temp/$COMPONENT.log"
+
 #user validation 
 USER_VALIDATION
 
 echo -n "Installing Nginx : "
+LOGFILE="/temp/$COMPONENT.log"
 yum install nginx -y &>> $LOGFILE
 if [ $? -eq 0 ] ; then
     echo -e "\e[32m SUCCESS \e[0m"
