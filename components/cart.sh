@@ -1,2 +1,7 @@
 #!/bin/bash
-echo "hello from cart"
+
+set -e
+COMPONENT=cart
+LOGFILE="/tmp/$COMPONENT.log"
+
+echo -n "hello from cart"
