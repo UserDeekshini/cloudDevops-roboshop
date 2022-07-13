@@ -6,28 +6,19 @@ set -e
 
 #user validation 
 USER_ID=$(id -u)
-if[$USER_ID ne 0];then
+if[$USER_ID ne 0]; then
     echo "\e[32m User is not root!!! nginx installation is not possible \e[0m"
     exit 1
 fi
+
+
 #Installing Nginx.
 
 yum install nginx -y
 systemctl enable nginx
 systemctl start nginx
-
-```
-
-Let's download the HTDOCS content and deploy it under the Nginx path.
-
-```
 # curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-
-```
-
-Deploy in Nginx Default Location.
-
-```
+#Deploy in Nginx Default Location.
 # cd /usr/share/nginx/html
 # rm -rf *
 # unzip /tmp/frontend.zip
@@ -35,5 +26,3 @@ Deploy in Nginx Default Location.
 # mv static/* .
 # rm -rf frontend-main README.md
 # mv localhost.conf /etc/nginx/default.d/roboshop.conf
-
-```
