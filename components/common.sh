@@ -36,10 +36,10 @@ NODEJS(){
     stat $?
     
     #calling function to configure the component services
-    #CONFIG_SERVICE
+    CONFIG_SERVICE
 
     #calling function start service
-    #START_SERVICE
+    START_SERVICE
 
 }
 
@@ -67,10 +67,8 @@ DOWNLOAD_AND_EXTRACT(){
 
 CONFIG_SERVICE(){
     echo -n "Updating SystemD file with service name : "
-    sed -i -e 's/MONGO_DNSNAME/mongodb.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
-    if [$COMPONENT == user] ; then
     sed -i -e 's/REDIS_DNSNAME/redis.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
-    fi
+    sed -i -e 's/MONGO_DNSNAME/mongodb.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service 
     cat /home/$APPUSER/$COMPONENT/systemd.service &>>$LOG_FILE
     mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat $?
