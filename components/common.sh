@@ -26,26 +26,26 @@ NODEJS(){
     stat $?
 
     #calling user creation function 
-    CREATE_USER()
+    CREATE_USER
 
     #calling function to download and extract the component files
-    #DOWNLOAD_AND_EXTRACT()
+    DOWNLOAD_AND_EXTRACT
 
-    #echo -n "Installing  the $COMPONENT : "
+    echo -n "Installing  the $COMPONENT : "
     npm install &>> $LOG_FILE
     stat $?
     
     #calling function to configure the component services
-    CONFIG_SERVICE()
+    CONFIG_SERVICE
 
     #calling function start service
-    START_SERVICE()
+    START_SERVICE
 
 }
 
 CREATE_USER(){
     echo -n "Creating the roboshop user : "
-    id roboshop &>>$LOG_FILE || adduser roboshop &>>$LOG_FILE
+    id roboshop &>>$LOG_FILE || adduser roboshop &>> $LOG_FILE
     stat $?
 }
 
