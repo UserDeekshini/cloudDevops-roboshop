@@ -4,4 +4,4 @@ set -e
 COMPONENT=cart
 LOGFILE="/tmp/$COMPONENT.log"
 
-echo -n "hello from cart"
+echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"

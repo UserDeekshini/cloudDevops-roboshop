@@ -7,8 +7,11 @@ LOG_FILE="/tmp/$COMPONENT.log"
 # user validation
 source components/common.sh
 
-echo -n "Installing Redis : "
+echo -n "Configuring $COMPONENT repos: "
 curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> $LOG_FILE
+stat $?
+
+echo -n "Installing $COMPONENT : "
 yum install redis-6.2.7 -y  &>> $LOG_FILE
 stat $?
 
@@ -20,3 +23,5 @@ stat $?
 
 #calling function from common.sh
 START_SERVICE
+
+echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
