@@ -2,7 +2,7 @@
 
 set -e
 COMPONENT=cart
-LOGFILE="/tmp/$COMPONENT.log"
+LOG_FILE="/tmp/$COMPONENT.log"
 APPUSER=roboshop
 
 #user validation
