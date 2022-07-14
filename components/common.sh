@@ -15,3 +15,11 @@ else
     echo -e "\e[32m FAILURE \e[0m"  
 fi
 }
+
+START(){
+systemctl daemon-reload 
+systemctl restart $COMPONENT 
+systemctl enable $COMPONENT 
+systemctl status $COMPONENT -l 
+stat $?
+}

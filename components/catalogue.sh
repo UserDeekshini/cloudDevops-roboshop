@@ -46,11 +46,7 @@ mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.serv
 stat $?
 
 echo -n "Starting the $COMPONENT : "
-systemctl daemon-reload &>> $LOG_FILE
-systemctl restart $COMPONENT &>> $LOG_FILE
-systemctl enable $COMPONENT &>> $LOG_FILE
-systemctl status $COMPONENT -l &>> $LOG_FILE
-stat $?
+START()
 
 
 #In order to make it work, update the proxy file in Nginx with the `CATALOGUE` server IP Address in the **`FRONTEND`** Server  
