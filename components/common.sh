@@ -67,7 +67,8 @@ DOWNLOAD_AND_EXTRACT(){
 
 CONFIG_SERVICE(){
     echo -n "Updating SystemD file with service name : "
-    sed -i -e 's/REDIS_ENDPOINT/redis.rhobode.iternal/' -e 's/MONGO_ENDPOINT/mongodb.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
+    #sed -i -e 's/REDIS_ENDPOINT/redis.rhobode.iternal/' -e 's/MONGO_ENDPOINT/mongodb.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
+    sed -i -e 's/REDIS_ENDPOINT/lredis.rhobode.iterna/' -e 's/CATALOGUE_ENDPOINT/catalogue.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
     cat /home/$APPUSER/$COMPONENT/systemd.service &>>$LOG_FILE
     mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat $?
