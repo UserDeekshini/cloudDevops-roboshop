@@ -29,7 +29,7 @@ NODEJS(){
     CREATE_USER()
 
     #calling function to download and extract the component files
-    DOWNLOAD_AND_EXTRACT()
+    #DOWNLOAD_AND_EXTRACT()
 
     #echo -n "Installing  the $COMPONENT : "
     npm install &>> $LOG_FILE
