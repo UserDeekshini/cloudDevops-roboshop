@@ -2,7 +2,7 @@
 
 set -e
 COMPONENT=redis
-LOG_FILE="/tmp/$COMPONENT/log"
+LOG_FILE="/tmp/$COMPONENT.log"
 
 # user validation
 source components/common.sh
