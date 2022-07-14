@@ -34,7 +34,7 @@ cd /home/roboshop/$COMPONENT
 stat $?
 
 echo -n "Installing  the $COMPONENT"
-npm install & >> $LOG_FILE
+npm install &>> $LOG_FILE
 stat $?
 
 
