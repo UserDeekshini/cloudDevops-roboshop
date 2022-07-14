@@ -50,6 +50,7 @@ systemctl daemon-reload &>> $LOG_FILE
 systemctl restart $COMPONENT &>> $LOG_FILE
 systemctl enable $COMPONENT &>> $LOG_FILE
 systemctl status $COMPONENT -l &>> $LOG_FILE
+stat $?
 
 #Now, you would still see **`CATEGORIES`** on the frontend page as empty. 
 #That’s because your `frontend` doesn't know who the `CATALOGUE` is when someone clicks the `CATEGORIES` option. So, we need to update the Nginx Reverse Proxy on the frontend. If not, you’d still see the frontend without categories.
