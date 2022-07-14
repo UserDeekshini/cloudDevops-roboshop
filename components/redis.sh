@@ -8,7 +8,7 @@ LOG_FILE="/tmp/$COMPONENT.log"
 source components/common.sh
 
 echo -e "Installing Redis : "
-curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
+curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> $LOG_FILE
 yum install redis-6.2.7 -y  &>> $LOG_FILE
 stat $?
 
