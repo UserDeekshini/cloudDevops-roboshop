@@ -3,6 +3,7 @@
 set -e
 COMPONENT=user
 LOG_FILE="/tmp/$COMPONENT.log"
+APPUSER=roboshop
 
 #user verification 
 source components/common.sh
