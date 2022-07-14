@@ -21,5 +21,4 @@ systemctl daemon-reload
 systemctl restart $COMPONENT 
 systemctl enable $COMPONENT 
 systemctl status $COMPONENT -l 
-stat $?
 }

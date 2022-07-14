@@ -47,7 +47,7 @@ stat $?
 
 echo -n "Starting the $COMPONENT : "
 START()
-
+stat $?
 
 #In order to make it work, update the proxy file in Nginx with the `CATALOGUE` server IP Address in the **`FRONTEND`** Server  
 #**`Note:`** Do not do a copy and paster of IP in the proxy file, there are high chances to enter the empty space characters, which are not visible on the vim editor. Manual Typing of IP Address/ DNS Name is preferred. 
