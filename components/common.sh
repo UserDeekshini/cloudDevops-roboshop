@@ -21,7 +21,7 @@ NODEJS(){
     curl -sL "https://rpm.nodesource.com/setup_lts.x" | bash &>>$LOG_FILE
     stat $?
 
-    echo -n "Installing nodeJS"
+    echo -n "Installing nodeJS : "
     yum install nodejs -y  &>>$LOG_FILE
     stat $?
 
@@ -29,9 +29,9 @@ NODEJS(){
     CREATE_USER()
 
     #calling function to download and extract the component files
-    #DOWNLOAD_AND_EXTRACT()
+    DOWNLOAD_AND_EXTRACT()
 
-    echo -n "Installing  the $COMPONENT"
+    #echo -n "Installing  the $COMPONENT : "
     npm install &>> $LOG_FILE
     stat $?
     
