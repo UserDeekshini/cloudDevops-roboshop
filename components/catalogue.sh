@@ -4,6 +4,7 @@ set -e
 COMPONENT=catalogue
 LOG_FILE="/tmp/$COMPONENT.log"
 NODE_SOURCE="https://rpm.nodesource.com/setup_lts.x"
+APPUSER="roboshop"
 
 #user validation 
 source components/common.sh
@@ -29,7 +30,7 @@ stat $?
 
 echo -n "Extracting the ${COMPONENT} : "
 unzip -o /tmp/${COMPONENT}.zip &>>$LOG_FILE
-mv ${COMPONENT}-main ${COMPONENT}
+mv ${COMPONENT}-main ${COMPONENT} &&    chown -R $APPUSER:$APPUSER $COMPONENT
 cd /home/roboshop/$COMPONENT 
 stat $?
 
@@ -38,17 +39,17 @@ npm install &>> $LOG_FILE
 stat $?
 
 
-# echo -n "Updating SystemD file with correct IP addresses : "
-# sed -i -e 's/MONGO_DNSNAME/172.31.11.146/' /home/roboshop/catalogue/systemd.service
-# cat /home/roboshop/$COMPONENT/systemd.service &>>$LOG_FILE
-# mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
-# stat $?
+echo -n "Updating SystemD file with service name : "
+sed -i -e 's/MONGO_DNSNAME/mongodb.rhobode.iternal/' /home/roboshop/catalogue/systemd.service
+cat /home/$APPUSER/$COMPONENT/systemd.service &>>$LOG_FILE
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
 
-# echo -n "Starting the $COMPONENT : "
-# systemctl daemon-reload &>>$LOG_FILE
-# systemctl restart $COMPONENT &>>$LOG_FILE
-# systemctl enable $COMPONENT &>>$LOG_FILE
-# systemctl status $COMPONENT -l &>>$LOG_FILE
+echo -n "Starting the $COMPONENT : "
+systemctl daemon-reload &>> $LOG_FILE
+systemctl restart $COMPONENT &>> $LOG_FILE
+systemctl enable $COMPONENT &>> $LOG_FILE
+systemctl status $COMPONENT -l &>> $LOG_FILE
 
 #Now, you would still see **`CATEGORIES`** on the frontend page as empty. 
 #That’s because your `frontend` doesn't know who the `CATALOGUE` is when someone clicks the `CATEGORIES` option. So, we need to update the Nginx Reverse Proxy on the frontend. If not, you’d still see the frontend without categories.
