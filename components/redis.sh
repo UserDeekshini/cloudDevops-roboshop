@@ -18,6 +18,5 @@ sed -i -e "s/127.0.0.1/0.0.0.0/"  /etc/redis/redis.conf
 cat /etc/redis/redis.conf &>> $LOG_FILE
 stat $?
 
-echo -n "Starting the $COMPONENT : "
-START()
-stat $?
+#calling function from common.sh
+START_SERVICE
