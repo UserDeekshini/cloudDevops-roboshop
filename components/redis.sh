@@ -24,4 +24,4 @@ stat $?
 #calling function from common.sh
 START_SERVICE
 
-echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
+echo -e "\e[32m ------------$COMPONENT Configuration is completed-------------  \e[0m"

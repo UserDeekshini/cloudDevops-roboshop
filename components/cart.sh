@@ -18,4 +18,4 @@ NODEJS
 # # systemctl restart nginx 
 
 
-echo -e "\e[32m ------------$COMPONENT Configuration is completed  \e[0m"
+echo -e "\e[32m ------------$COMPONENT Configuration is completed-----------  \e[0m"
