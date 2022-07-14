@@ -9,7 +9,7 @@ APPUSER="roboshop"
 source components/common.sh
 
 #calling function from common.sh 
-NODEJS()
+NODEJS
 
 
 #In order to make it work, update the proxy file in Nginx with the `CATALOGUE` server IP Address in the **`FRONTEND`** Server  
