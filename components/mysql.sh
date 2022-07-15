@@ -13,13 +13,13 @@ curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stan
 stat $?
 
 echo -e "Installing $COMPONENT"
-yum install mysql-community-server -y
+yum install mysql-community-server -y &>>$LOG_FILE
 stat $?
 
 echo -e "Starting the component"
 systemctl enable mysqld &>>$LOG_FILE
-systemctl start mysqld  &>>$LOG_FILE
-
+systemctl start mysqld &>>$LOG_FILE
+stat $?
 
 # 1. Now a default root password will be generated and can be seen in the log file.
 
