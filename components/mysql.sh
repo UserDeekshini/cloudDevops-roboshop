@@ -24,7 +24,7 @@ stat $?
 
 echo -n "Changing the Default $COMPONENT username and password : "
 echo "show databases" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
-if [ $? -ne 0 ]; then
+if [ 0 -ne $? ]; then
 echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');"  > /tmp/rootpassword_change.sql
 DEFAULT_MYSQLROOT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
 mysql --connect-expired-password -uroot -p"$DEFAULT_MYSQLROOT_PASSWORD"  < /tmp/rootpassword_change.sql
