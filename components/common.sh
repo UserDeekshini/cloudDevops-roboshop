@@ -101,4 +101,7 @@ INSTALL_MAVEN()
 
     #calling the function
     CONFIG_SERVICE
+
+    #calling the function
+    START_SERVICE
 }
