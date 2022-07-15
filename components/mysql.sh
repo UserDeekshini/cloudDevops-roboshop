@@ -8,15 +8,15 @@ APPUSER="roboshop"
 #user validation 
 source components/common.sh
 
-echo -e "Configuring $COMPONENT Repo"
+echo -n "Configuring $COMPONENT Repo"
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
 stat $?
 
-echo -e "Installing $COMPONENT"
+echo -n "Installing $COMPONENT"
 yum install mysql-community-server -y &>>$LOG_FILE
 stat $?
 
-echo -e "Starting the component"
+echo -n "Starting the component"
 systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld &>>$LOG_FILE
 stat $?
