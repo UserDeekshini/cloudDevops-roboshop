@@ -23,7 +23,7 @@ stat $?
 
 echo -n "Changing the Default $COMPONENT username and password : "
 echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');"  > /tmp/rootpassword_change.sql
-DEFAULT_MYSQLROOT_PASSWORD= $(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
+DEFAULT_MYSQLROOT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
 echo -n "$DEFAULT_MYSQLROOT_PASSWORD"
 #mysql --connect-expired-password -uroot -p"$DEFAULT_MYSQLROOT_PASSWORD"  < /tmp/rootpassword_change.sql
 stat $?
