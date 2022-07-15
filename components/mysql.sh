@@ -18,6 +18,7 @@ stat $?
 
 echo -n "Starting the $COMPONENT"
 systemctl enable mysqld &>>$LOG_FILE && systemctl start mysqld &>>$LOG_FILE
+systemctl status mysqld &>>$LOG_FILE
 stat $?
 
 # Mysql root user password has to be changed only once during the login in, if it is run twice error msg will be thrown
@@ -36,7 +37,7 @@ echo "show plugins" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE | grep "validate_pa
 if [ 0 -eq $? ]; then
     echo -n "Uninstalling $COMPONENT validate_password pluggin : "
     echo "uninstall plugin validate_password" > /tmp/password_validate.sql
-    mysql --connect-expired-password -uroot -p"$DEFAULT_MYSQLROOT_PASSWORD"  < /tmp/rootpassword_change.sql
+    mysql -uroot -pRoboShop@1  < /tmp/rootpassword_change.sql
     stat $?
 fi
 
