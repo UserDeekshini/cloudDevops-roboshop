@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
 COMPONENT=mysql
 LOG_FILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
@@ -33,7 +32,7 @@ if [ 0 -ne $? ]; then
 fi
 
 # uninstall plugin validate_password only once 
-echo "show plugins" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE | grep "validate_password"
+echo "show plugins" | mysql -uroot -pRoboShop@1 | grep "validate_password"  &>>$LOG_FILE 
 if [ 0 -eq $? ]; then
     echo -n "Uninstalling $COMPONENT validate_password pluggin : "
     echo "uninstall plugin validate_password;" > /tmp/password_validate.sql
