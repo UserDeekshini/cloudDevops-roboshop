@@ -6,5 +6,5 @@ LOG_FILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
 
 #calling the function from common.sh
-INSTALL_MAVEN()
+INSTALL_MAVEN
 
