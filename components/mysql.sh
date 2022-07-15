@@ -34,7 +34,7 @@ fi
 
 # uninstall plugin validate_password only once 
 echo "show plugins" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE | grep "validate_password"
-if [ 0 -ne $? ]; then
+if [ 0 -eq $? ]; then
     echo -n "Uninstalling $COMPONENT validate_password pluggin : "
     uninstall plugin validate_password
     stat $?
