@@ -17,8 +17,7 @@ yum install mysql-community-server -y &>>$LOG_FILE
 stat $?
 
 echo -n "Starting the $COMPONENT"
-systemctl enable mysqld &>>$LOG_FILE
-systemctl start mysqld &>>$LOG_FILE
+systemctl enable mysqld &>>$LOG_FILE && systemctl start mysqld &>>$LOG_FILE
 stat $?
 
 # Mysql root user password has to be changed only once during the login in, if it is run twice error msg will be thrown
