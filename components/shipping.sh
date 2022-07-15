@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-COMPONENT=catalogue
+COMPONENT=shipping
 LOG_FILE="/tmp/$COMPONENT.log"
 APPUSER="roboshop"
 

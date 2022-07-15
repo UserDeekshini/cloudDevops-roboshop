@@ -85,11 +85,13 @@ START_SERVICE(){
 INSTALL_MAVEN()
 {
     echo -n "Installing Maven : "
-    yum install maven -y
+    yum install maven -y &>> $LOG_FILE
     stat $?
 
+    #calling the function
     CREATE_USER
-
+      
+    #calling the function
     DOWNLOAD_AND_EXTRACT
 
     echo -n "cleaning the maven package : "
@@ -97,5 +99,6 @@ INSTALL_MAVEN()
     mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
 
+    #calling the function
     CONFIG_SERVICE
 }
