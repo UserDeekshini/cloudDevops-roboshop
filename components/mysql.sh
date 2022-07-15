@@ -16,13 +16,13 @@ echo -n "Installing $COMPONENT"
 yum install mysql-community-server -y &>>$LOG_FILE
 stat $?
 
-echo -n "Starting the $component"
+echo -n "Starting the $COMPONENT"
 systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld &>>$LOG_FILE
 stat $?
 
 # Mysql root user password has to be changed only once during the login in, if it is run twice error msg will be thrown
-#so using if condition to validate
+# so using if condition to validate
 echo "show databases" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
 if [ 0 -ne $? ]; then
     echo -n "Changing the Default $COMPONENT username and password : "
