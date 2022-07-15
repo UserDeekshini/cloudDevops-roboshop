@@ -21,20 +21,26 @@ systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld &>>$LOG_FILE
 stat $?
 
-
-echo -n "Changing the Default $COMPONENT username and password : "
+# Mysql root user password has to be changed only once during the login in, if it is run twice error msg will be thrown
+#so using if condition to validate
 echo "show databases" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE
 if [ 0 -ne $? ]; then
+    echo -n "Changing the Default $COMPONENT username and password : "
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');"  > /tmp/rootpassword_change.sql
     DEFAULT_MYSQLROOT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
     mysql --connect-expired-password -uroot -p"$DEFAULT_MYSQLROOT_PASSWORD"  < /tmp/rootpassword_change.sql
 fi
-
 stat $?
-# 1. Next, We need to change the default root password in order to start using the database service. Use password as `RoboShop@1` . Rest of the options you can choose `No`
+
+# uninstall plugin validate_password only once 
+echo "show plugins" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE | grep "validate_password"
+if [ 0 -ne $? ]; then
+    uninstall plugin validate_password
+fi
+stat $?
 
 
-# # mysql_secure_installation
+mysql_secure_installation
 
 
 # 1. You can check whether the new password is working or not using the following command in MySQL
