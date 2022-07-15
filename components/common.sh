@@ -67,7 +67,7 @@ DOWNLOAD_AND_EXTRACT(){
 
 CONFIG_SERVICE(){
     echo -n "Updating SystemD file with service name : "
-    sed -i -e 's/REDIS_ENDPOINT/redis.rhobode.iternal/' -e 's/CATALOGUE_ENDPOINT/catalogue.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
+    sed -i -e 's/CARTENDPOINT/cart.rhobode.iternal/' -e 's/DBHOST/mysql.rhobode.iternal/' /home/roboshop/$COMPONENT/systemd.service
     cat /home/$APPUSER/$COMPONENT/systemd.service &>>$LOG_FILE
     mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat $?
@@ -80,4 +80,22 @@ START_SERVICE(){
     systemctl enable $COMPONENT &>> $LOG_FILE
     systemctl status $COMPONENT -l &>> $LOG_FILE
     stat $?
+}
+
+INSTALL_MAVEN()
+{
+    echo -n "Installing Maven : "
+    yum install maven -y
+    stat $?
+
+    CREATE_USER
+
+    DOWNLOAD_AND_EXTRACT
+
+    echo -n "cleaning the maven package : "
+    mvn clean package &>> $LOG_FILE
+    mv target/$COMPONENT-1.0.jar $COMPONENT.jar
+    stat $?
+
+    CONFIG_SERVICE
 }
