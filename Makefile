@@ -16,4 +16,7 @@ redis:
 user:
 	sh components/user.sh
 
+user:
+	sh components/mysql.sh
+
 
