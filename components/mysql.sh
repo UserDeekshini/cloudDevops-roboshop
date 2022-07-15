@@ -29,16 +29,17 @@ if [ 0 -ne $? ]; then
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');"  > /tmp/rootpassword_change.sql
     DEFAULT_MYSQLROOT_PASSWORD=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
     mysql --connect-expired-password -uroot -p"$DEFAULT_MYSQLROOT_PASSWORD"  < /tmp/rootpassword_change.sql
+    stat $?
 fi
-stat $?
 
 # uninstall plugin validate_password only once 
 echo "show plugins" | mysql -uroot -pRoboShop@1 &>>$LOG_FILE | grep "validate_password"
 if [ 0 -ne $? ]; then
     echo -n "Uninstalling $COMPONENT validate_password pluggin : "
     uninstall plugin validate_password
+    stat $?
 fi
-stat $?
+
 
 
 #mysql_secure_installation
