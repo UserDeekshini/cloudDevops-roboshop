@@ -16,23 +16,22 @@ echo -n "Installing $COMPONENT"
 yum install mysql-community-server -y &>>$LOG_FILE
 stat $?
 
-echo -n "Starting the component"
+echo -n "Starting the $component"
 systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld &>>$LOG_FILE
 stat $?
 
-# 1. Now a default root password will be generated and can be seen in the log file.
-
-
-# # grep temp /var/log/mysqld.log
-# ( Copy that password )
-
+echo -n "Changing the Default username and password"
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" >/tmp/rootpassword_change.sql
+DEFAULT_MYSQLROOT_PASSWORD= $(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
+mysql -uroot -p$DEFAULT_MYSQLROOT_PASSWORD < /tmp/rootpassword_change.sql
+stat $?
 
 # 1. Next, We need to change the default root password in order to start using the database service. Use password as `RoboShop@1` . Rest of the options you can choose `No`
 
-# ```bash
+
 # # mysql_secure_installation
-# ```
+
 
 # 1. You can check whether the new password is working or not using the following command in MySQL
 
