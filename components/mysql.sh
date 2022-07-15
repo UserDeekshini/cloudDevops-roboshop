@@ -41,7 +41,7 @@ fi
 stat $?
 
 
-mysql_secure_installation
+#mysql_secure_installation
 
 
 # 1. You can check whether the new password is working or not using the following command in MySQL
