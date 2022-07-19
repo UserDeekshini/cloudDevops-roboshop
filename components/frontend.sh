@@ -45,4 +45,7 @@ rm -rf $COMPONENT-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
+echo -n "Updating the DNS Name in the Nginx Reverse Proxy File "
+sed -i -e "/catalogue/s/localhost/catalogue.rhobode.iternal/" -e "/user/s/localhost/user.rhobode.iternal/" -e "/cart/s/localhost/cart.rhobode.iternal/" -e "/shipping/s/localhost/shipping.rhobode.iternal/" -e "/payment/s/localhost/payment.rhobode.iternal/" /etc/nginx/default.d/roboshop.conf
+
 echo -e "\e[32m ------------$COMPONENT Configuration is completed------------------  \e[0m"
