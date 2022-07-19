@@ -5,6 +5,9 @@ COMPONENT=rabbitmq
 LOG_FILE="/tmp/$COMPONENT.log"
 APPUSER=roboshop
 
+#user validation 
+source components/common.sh
+
 echo -n "Installing dependency for $COMPONENT : "
 yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y &>>LOG_FILE
 stat $?
